@@ -1,0 +1,58 @@
+{
+  "name": "1322-benchmark",
+  "version": "0.1.0",
+  "description": "Vendor-neutral CLI for measuring real-time detection latency of WebSocket social/crypto data feeds. Ships a 1322 (X/Twitter) adapter plus a generic adapter for any JSON WebSocket stream.",
+  "license": "MIT",
+  "author": "SisoSol",
+  "type": "commonjs",
+  "bin": {
+    "1322-benchmark": "dist/cli.js"
+  },
+  "main": "dist/cli.js",
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint src",
+    "start": "node dist/cli.js",
+    "smoketest": "node dist/cli.js --help && node dist/cli.js run --help"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/ws": "^8.5.13",
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
+    "eslint": "^9.39.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "overrides": {
+    "brace-expansion": "^5.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SisoSol/1322-benchmark.git"
+  },
+  "keywords": [
+    "benchmark",
+    "latency",
+    "websocket",
+    "real-time",
+    "twitter-api",
+    "x-api",
+    "cli"
+  ]
+}

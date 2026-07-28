@@ -1,0 +1,35 @@
+{
+  "//": [
+    "Illustrative config, not executed by this repo. It documents the field",
+    "paths from a real, published 1322 API contract (Binance Square,",
+    "https://1322.io/docs, WsEnvelope / BinancePost types) purely to show",
+    "how the generic adapter's field-mapping shape works in practice.",
+    "",
+    "This is here as a worked example of a feed that DOES expose an explicit",
+    "provider-detection timestamp (BinancePost.detected_at) separate from the",
+    "content's own publish time (BinancePost.published_at) - contrast with",
+    "the 1322 X/Twitter feed (see src/adapters/x1322.ts), which does not.",
+    "",
+    "Before pointing this at a live Binance Square (or any other) endpoint:",
+    "  - Re-verify the exact WS event `type` string(s) against a live",
+    "    GET /v1/dashboard response and the current docs - the docs page's",
+    "    connection-example snippet and its formal WsEnvelope type did not",
+    "    agree on this at the time this example was written, so do not trust",
+    "    the placeholder type value below without checking a live message.",
+    "  - Confirm auth: X-Api-Key header, ws key via query param `key=`.",
+    "  - Get your own API key; this repo ships no credentials and has not",
+    "    run this config against any live service."
+  ],
+  "name": "binance-square-1322-illustrative",
+  "//wsUrl": "Only {API_KEY} is a substituted token. Replace YOUR_WS_PATH_FROM_DASHBOARD yourself - the path is per-account and comes from GET /v1/dashboard, this tool does not fetch it for you.",
+  "wsUrl": "wss://binance.1322.io/YOUR_WS_PATH_FROM_DASHBOARD?key={API_KEY}",
+  "fields": {
+    "type": "type",
+    "id": "data.id",
+    "account": "data.username",
+    "publishedAt": { "path": "data.published_at", "format": "iso8601" },
+    "providerDetectedAt": { "path": "data.detected_at", "format": "iso8601" }
+  },
+  "contentEventTypes": ["binance.post"],
+  "primaryEventTypes": ["binance.post"]
+}

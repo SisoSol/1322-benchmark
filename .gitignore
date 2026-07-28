@@ -1,0 +1,19 @@
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Real credentials
+.env
+.env.local
+
+# Benchmark run output (raw samples / summaries from local runs)
+benchmark-*.jsonl
+benchmark-*.csv
+*.summary.json
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
