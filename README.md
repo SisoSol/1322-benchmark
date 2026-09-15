@@ -5,16 +5,7 @@
 ![Node.js >=18](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)
 ![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-A vendor-neutral command-line tool for measuring how long it takes a
-real-time WebSocket feed to deliver a new post after it's published,
-and for doing that measurement in a way that survives scrutiny.
-
-It ships with a working adapter for [1322](https://1322.io)'s X/Twitter
-feed and a second, config-driven adapter that can point at **any**
-WebSocket endpoint that sends one JSON object per text frame. Run it
-against 1322. Run it against a competitor you already have a key for.
-Run it against your own infrastructure. The tool doesn't care, and
-this repository takes no side.
+A vendor-neutral command-line tool for measuring real-time social feed latency: how long a WebSocket feed takes to deliver a new post after it is published, measured the same way for every feed. It ships a working adapter for 1322's X/Twitter feed and a config-driven adapter for any WebSocket endpoint that sends one JSON object per frame, so you can run it against 1322, a competitor you already have a key for, or your own infrastructure. Maintained by the 1322 team; this repository contains no latency ranking or claimed result, only the runner, the methodology and the output schema.
 
 ## What this is not
 
@@ -48,6 +39,7 @@ checklist we think a fair test has to satisfy. See
 - [Known sources of error](#known-sources-of-error-read-this-before-you-cite-a-number)
 - [Architecture](#architecture)
 - [Contributing](#contributing)
+- [Related](#related)
 - [License](#license)
 
 ## Methodology
@@ -408,6 +400,11 @@ this project doesn't bend on.
 
 Before opening a PR: `npm run typecheck && npm run lint && npm run build`.
 CI runs the same checks (plus `--help` smoke tests) on Node 18 and 22.
+
+## Related
+
+- [1322-signal-observatory](https://github.com/SisoSol/1322-signal-observatory) - the operating profiles 1322 publishes, which this tool lets you check
+- [1322-client](https://github.com/SisoSol/1322-client) - TypeScript/JavaScript client for the 1322 feeds
 
 ## License
 
